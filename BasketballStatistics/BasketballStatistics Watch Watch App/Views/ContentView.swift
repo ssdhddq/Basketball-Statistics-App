@@ -8,17 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var one: Int = 0
-    @State private var two: Int = 0
-    @State private var three: Int = 0
-    
-    @State private var currentData = Date()
+    @State var viewModel = ViewModel.shared
     
     var body: some View {
         VStack(spacing: 20) {
             InformationScoreView()
             
-            DateScrollView(selectedDate: $currentData)
+            DateScrollView(selectedDate: $viewModel.currentData)
 
         }
         .ignoresSafeArea(edges: [.top, .bottom])
