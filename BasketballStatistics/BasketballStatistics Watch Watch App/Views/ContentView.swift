@@ -15,12 +15,7 @@ struct ContentView: View {
     @State private var currentData = Date()
     
     var body: some View {
-        VStack(spacing: 8) {
-            Text(formattedDate(currentData))
-                .font(.footnote.bold())
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                .padding([.top, .leading], 14)
-            
+        VStack(spacing: 20) {
             InformationScoreView()
             
             DateScrollView(selectedDate: $currentData)

@@ -21,14 +21,18 @@ struct DateScrollView: View {
             HStack() {
                 ForEach(last7Days, id: \.self) { date in
                     Text(shortFormatted(date))
+                        .font(.system(size: 12, weight: .semibold))
                         .padding(8)
+                        .frame(width: 50, height: 25)
                         .background(
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Calendar.current.isDate(date, inSameDayAs: selectedDate) ? .blue : .gray.opacity(0.2))
+                                
                         )
                         .onTapGesture {
                             selectedDate = date
                         }
+                    
                 }
             }
         }

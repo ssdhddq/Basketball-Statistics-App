@@ -12,7 +12,7 @@ struct InformationScoreView: View {
     var scoresInformation = ["2","1","4", "12"]
     
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 14) {
             HStack(spacing: 4) {
                 ForEach(scores, id: \.self) { score in
                     ZStack {
