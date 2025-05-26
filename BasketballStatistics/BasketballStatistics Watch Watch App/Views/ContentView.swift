@@ -21,10 +21,12 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .padding([.top, .leading], 14)
             
+            InformationScoreView()
+            
             DateScrollView(selectedDate: $currentData)
 
         }
-        .ignoresSafeArea(edges: .top)
+        .ignoresSafeArea(edges: [.top, .bottom])
     }
     
     private func formattedDate(_ date: Date) -> String {
