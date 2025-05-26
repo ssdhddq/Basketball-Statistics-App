@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct InformationScoreView: View {
-    let viewModel = ViewModel.shared
+    @ObservedObject var viewModel = ViewModel.shared
+    let array = ["3", "2", "1", "-"]
     
     var body: some View {
         VStack(spacing: 14) {
             HStack(spacing: 4) {
-                ForEach(["3", "2", "1", "-"], id: \.self) { score in
+                ForEach(array, id: \.self) { score in
                     ZStack {
                         Circle()
                             .fill(.gray.opacity(0.2))
@@ -22,12 +23,22 @@ struct InformationScoreView: View {
                         Text(score)
                             .font(.system(size: 20, weight: .bold))
                             .foregroundColor(.white)
+                            .onTapGesture {
+                                if score == "3" {
+                                    viewModel.scores[0] += 3
+                                } else if score == "2" {
+                                    viewModel.scores[1] += 2
+                                } else if score == "1" {
+                                    viewModel.scores[2] += 1
+                                }
+                            }
                     }
+                    
                 }
             }
             
             HStack() {
-                ForEach(viewModel.scores, id: \.self) { score in
+                ForEach(Array(viewModel.scores.enumerated()), id: \.offset) { index, score in
                     ZStack {
                         Circle()
                             .fill(.gray.opacity(0.2))
@@ -37,6 +48,7 @@ struct InformationScoreView: View {
                             .font(.system(size: 20, weight: .bold))
                             .foregroundColor(.white)
                     }
+                    
                 }
             }
         }

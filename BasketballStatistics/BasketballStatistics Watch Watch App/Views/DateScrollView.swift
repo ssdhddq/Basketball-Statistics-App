@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DateScrollView: View {
     @Binding var selectedDate: Date
-    let viewModel = ViewModel.shared
+    @ObservedObject var viewModel = ViewModel.shared
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
